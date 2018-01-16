@@ -2,35 +2,46 @@ package main
 
 import "fmt"
 
-type Node interface {
+type NodeParent interface{
+	sensorReport() float32
+}
+
+
+type NodeImpl struct {
+	id int
+	x int
+	y int
+}
+
+type NodeMovement interface{
+	NodeParent
 	move()
 }
 
 type bn struct {
-	id int
-	x int
-	y int
+	*NodeImpl
 	x_speed int
 	y_speed int
 
 }
 
 type wn struct {
-	id int
-	x int
-	y int
+	*NodeImpl
 	speed int
 	dir int
 }
 
 type rn struct {
-	id int
-	x int
-	y int
+	*NodeImpl
+}
+
+
+func (n *NodeImpl) sensorReport() float32 {
+
+	return 0.1
 }
 
 func (n bn) String() string {
-
 	return fmt.Sprintf("x: %v y: %v Xspeed: %v Yspeed: %v id: %v", n.x, n.y, n.x_speed, n.y_speed, n.id)
 }
 
