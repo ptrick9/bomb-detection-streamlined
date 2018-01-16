@@ -16,7 +16,7 @@ func rangeInt(min, max int) int {
 
 func main() {
 	maxX = 10
-	maxY = 10
+	maxY = 132
 	grid = make([][]Node, 10)
 	for i:= 0; i < 10; i++ {
 		grid[i] = make([]Node, 10)
