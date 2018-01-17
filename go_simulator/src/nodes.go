@@ -1,9 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 type NodeParent interface{
 	sensorReport() float32
+	distance(b bomb) float32
 }
 
 
@@ -35,6 +39,9 @@ type rn struct {
 	*NodeImpl
 }
 
+func (n *NodeImpl) distance(b bomb) float32 {
+	return float32(math.Sqrt(math.Pow(float64(n.x-b.x), 2) + math.Pow(float64(n.y-b.y), 2)))
+}
 
 func (n *NodeImpl) sensorReport() float32 {
 
